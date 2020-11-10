@@ -2,7 +2,7 @@ from resemblyzer import VoiceEncoder, preprocess_wav
 from pathlib import Path
 import numpy as np
 
-threshold = 0.6
+threshold = 0.6212344624
 
 def simVoice(audio1_path,audio2_path):
     wav1 = preprocess_wav(Path(audio1_path))
