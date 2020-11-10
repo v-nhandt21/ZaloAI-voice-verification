@@ -1,6 +1,8 @@
 from resemblyzer import VoiceEncoder, preprocess_wav
 from pathlib import Path
 import numpy as np
+from numpy import dot
+from numpy.linalg import norm
 
 threshold = 0.6212344624
 
@@ -13,7 +15,7 @@ def simVoice(audio1_path,audio2_path):
     embed1 = encoder.embed_utterance(wav1)
     embed2 = encoder.embed_utterance(wav2)
                             
-    return np.inner(embed1, embed2)
+    return dot(embed1, embed2)/(norm(embed1)*norm(embed2)) #np.inner(embed1, embed2)
 
 ave = 0
 with open("submission.csv", "w+", encoding="utf-8") as fw:
@@ -26,7 +28,7 @@ with open("submission.csv", "w+", encoding="utf-8") as fw:
             audio2_path= "../DATA/public-test/" + audio2_path
 
             mesSim = simVoice(audio1_path,audio2_path)
-            #print(mesSim)
+            print(mesSim)
             ave+=mesSim
 
             if mesSim > threshold:
