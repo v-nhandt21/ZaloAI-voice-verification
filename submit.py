@@ -4,7 +4,7 @@ import numpy as np
 from numpy import dot
 from numpy.linalg import norm
 
-threshold = 0.6212344624
+threshold = 0.7
 
 def simVoice(audio1_path,audio2_path):
     wav1 = preprocess_wav(Path(audio1_path))
