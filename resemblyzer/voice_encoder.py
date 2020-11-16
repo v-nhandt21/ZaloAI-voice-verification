@@ -9,7 +9,7 @@ import torch
 
 
 class VoiceEncoder(nn.Module):
-    def __init__(self, device: Union[str, torch.device]=None, verbose=True):
+    def __init__(self, device: Union[str, torch.device]=None, verbose=False):
         """
         :param device: either a torch device or the name of a torch device (e.g. "cpu", "cuda"). 
         If None, defaults to cuda if it is available on your machine, otherwise the model will 
@@ -30,7 +30,7 @@ class VoiceEncoder(nn.Module):
         self.device = device
             
         # Load the pretrained model'speaker weights
-        weights_fpath = Path(__file__).resolve().parent.joinpath("first_model.pt")
+        weights_fpath = Path(__file__).resolve().parent.joinpath("/home/src/Real-Time-Voice-Cloning/encoder/saved_models/first_model.pt")
         if not weights_fpath.exists():
             raise Exception("Couldn't find the voice encoder pretrained model at %s." % 
                             weights_fpath)
